@@ -284,8 +284,7 @@ If you use this code in academic work, please cite:
 
 ```bibtex
 @software{tokino2026rincoin,
-  title        = {On the Convergence of Regenerative Thermodynamic Security
-                  and Economic Incentives (Rincoin v1.6.2)},
+  title        = {On the Convergence of Regenerative Thermodynamic Security and Economic Incentives (Rincoin v1.6.2)},
   author       = {Tokino, Michiru},
   year         = {2026},
   version      = {1.6.2},
