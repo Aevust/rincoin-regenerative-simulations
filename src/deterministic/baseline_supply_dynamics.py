@@ -27,10 +27,14 @@ Usage
 
 import math
 import os
+from pathlib import Path
 
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker  # noqa: F401 – available for future axis tweaks
+
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+_OUTPUT_DIR = _REPO_ROOT / "output"
 
 
 # ==========================================
@@ -153,7 +157,7 @@ def compute_baseline_trajectories(
 # ==========================================
 
 def main() -> None:
-    os.makedirs("output", exist_ok=True)
+    _OUTPUT_DIR.mkdir(exist_ok=True)
 
     for scenario_id, config in SCENARIOS.items():
         print(f"Processing {scenario_id}...")
@@ -247,7 +251,7 @@ def main() -> None:
         ax.grid(True, linestyle=":", alpha=0.7)
         plt.tight_layout()
 
-        output_filename = "output/fig_baseline_deterministic.png"
+        output_filename = _OUTPUT_DIR / "fig_baseline_deterministic.png"
         plt.savefig(output_filename, dpi=300, bbox_inches="tight")
         plt.close()
 

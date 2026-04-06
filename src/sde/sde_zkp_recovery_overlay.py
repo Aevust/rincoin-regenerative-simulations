@@ -27,10 +27,14 @@ Usage
 """
 
 import os
+from pathlib import Path
 
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
+
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+_OUTPUT_DIR = _REPO_ROOT / "output"
 
 
 # ==========================================
@@ -144,7 +148,22 @@ NUM_SIMS = 100_000           # High precision: 20_000 or 100_000
 # 3. Main Execution
 # ==========================================
 
+def _check_memory_feasibility(num_sims: int, num_steps: int) -> None:
+    """Warn if estimated peak memory exceeds a reasonable threshold."""
+    # 5 arrays (C, D, V, Z_loss, Z_rec) x float64 x 2 simulation runs
+    estimated_bytes = 5 * 2 * num_sims * num_steps * 8
+    estimated_gb = estimated_bytes / (1024 ** 3)
+    if estimated_gb > 2.0:
+        print(
+            f"Warning: NUM_SIMS={num_sims:,} will require approximately "
+            f"{estimated_gb:.1f} GB of RAM. "
+            "Reduce NUM_SIMS to 20_000 if this exceeds available memory."
+        )
+
+
 def main() -> None:
+    _check_memory_feasibility(NUM_SIMS, YEARS + 1)
+
     common = dict(
         years=YEARS, initial_supply=INITIAL_SUPPLY, rf=RF, mu=MU,
         sigma_c=SIGMA_C, epoch_mean=SWEEP_MEAN, epoch_std=SWEEP_STD,
@@ -222,9 +241,9 @@ def main() -> None:
 
     plt.tight_layout()
 
-    os.makedirs("output", exist_ok=True)
+    _OUTPUT_DIR.mkdir(exist_ok=True)
     plt.savefig(
-        f"output/fig_zkp_overlay_mu{MU * 100:.1f}.png",
+        _OUTPUT_DIR / f"fig_zkp_overlay_mu{MU * 100:.1f}.png",
         dpi=300, bbox_inches="tight",
     )
     plt.show()

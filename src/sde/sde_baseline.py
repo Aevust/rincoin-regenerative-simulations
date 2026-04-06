@@ -26,10 +26,14 @@ Usage
 """
 
 import os
+from pathlib import Path
 
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
+
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+_OUTPUT_DIR = _REPO_ROOT / "output"
 
 
 # ==========================================
@@ -101,6 +105,7 @@ ANNUAL_ISSUANCE = 315_360     # r_f = 0.6 RIN/block * 525,600 blocks
 BASE_LOSS_RATE = 0.015        # Adjust: 0.015, 0.016, 0.017, etc.
 LOSS_VOLATILITY = 0.005       # Stochastic volatility sigma (0.5%)
 NUM_SIMULATIONS = 1000        # Monte Carlo paths (N)
+RANDOM_SEED = 42              # Set to None for non-deterministic runs
 
 
 # ==========================================
@@ -108,6 +113,9 @@ NUM_SIMULATIONS = 1000        # Monte Carlo paths (N)
 # ==========================================
 
 def main() -> None:
+    if RANDOM_SEED is not None:
+        np.random.seed(RANDOM_SEED)
+
     t_array, all_supplies = simulate_stochastic_supply(
         YEARS, INITIAL_SUPPLY, ANNUAL_ISSUANCE,
         BASE_LOSS_RATE, LOSS_VOLATILITY, NUM_SIMULATIONS,
@@ -159,9 +167,9 @@ def main() -> None:
     plt.grid(True, linestyle=":", alpha=0.7)
     plt.tight_layout()
 
-    os.makedirs("output", exist_ok=True)
+    _OUTPUT_DIR.mkdir(exist_ok=True)
     plt.savefig(
-        f"output/fig_baseline_{INITIAL_SUPPLY // 1_000_000}m_mu{BASE_LOSS_RATE * 100:.1f}.png",
+        _OUTPUT_DIR / f"fig_baseline_{INITIAL_SUPPLY // 1_000_000}m_mu{BASE_LOSS_RATE * 100:.1f}.png",
         dpi=300, bbox_inches="tight",
     )
     plt.show()

@@ -26,9 +26,13 @@ Usage
 """
 
 import os
+from pathlib import Path
 
 import numpy as np
 import matplotlib.pyplot as plt
+
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+_OUTPUT_DIR = _REPO_ROOT / "output"
 
 
 # ==========================================
@@ -251,9 +255,9 @@ def main() -> None:
     ax.legend(fontsize=10, loc="upper left")
     ax.grid(True, ls=":", alpha=0.4)
 
-    os.makedirs("output", exist_ok=True)
+    _OUTPUT_DIR.mkdir(exist_ok=True)
     plt.savefig(
-        f"output/fig_4panel_recovery_mu{MU * 100:.1f}.png",
+        _OUTPUT_DIR / f"fig_4panel_recovery_mu{MU * 100:.1f}.png",
         dpi=300, bbox_inches="tight",
     )
     plt.show()

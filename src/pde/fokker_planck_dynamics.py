@@ -21,10 +21,14 @@ Usage
 """
 
 import os
+from pathlib import Path
 
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import lognorm, gamma
+
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+_OUTPUT_DIR = _REPO_ROOT / "output"
 
 
 # ==========================================
@@ -124,9 +128,9 @@ def main() -> None:
 
     plt.tight_layout()
 
-    os.makedirs("output", exist_ok=True)
+    _OUTPUT_DIR.mkdir(exist_ok=True)
     plt.savefig(
-        "output/fig_fokker_planck.png",
+        _OUTPUT_DIR / "fig_fokker_planck.png",
         dpi=300, bbox_inches="tight",
     )
     plt.show()

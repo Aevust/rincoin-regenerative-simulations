@@ -15,9 +15,13 @@ Usage
 """
 
 import os
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+_OUTPUT_DIR = _REPO_ROOT / "output"
 
 
 def create_cryptographic_vault_dynamics_diagram() -> None:
@@ -205,9 +209,9 @@ def create_cryptographic_vault_dynamics_diagram() -> None:
 
     plt.tight_layout()
 
-    os.makedirs("output", exist_ok=True)
+    _OUTPUT_DIR.mkdir(exist_ok=True)
     plt.savefig(
-        "output/fig_cryptographic_vault.png",
+        _OUTPUT_DIR / "fig_cryptographic_vault.png",
         dpi=300, bbox_inches="tight",
     )
     plt.show()

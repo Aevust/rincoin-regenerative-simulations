@@ -21,10 +21,14 @@ Usage
 """
 
 import os
+from pathlib import Path
 
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
+
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+_OUTPUT_DIR = _REPO_ROOT / "output"
 
 
 # ==========================================
@@ -105,6 +109,7 @@ NUM_SIMULATIONS = 1000
 
 MU_1 = 0.015  # Top panel
 MU_2 = 0.016  # Bottom panel
+RANDOM_SEED = 42              # Set to None for non-deterministic runs
 
 
 # ==========================================
@@ -112,6 +117,9 @@ MU_2 = 0.016  # Bottom panel
 # ==========================================
 
 def main() -> None:
+    if RANDOM_SEED is not None:
+        np.random.seed(RANDOM_SEED)
+
     t_array, C_top, _ = simulate_event_sweeper_model(
         YEARS, INITIAL_SUPPLY, ANNUAL_ISSUANCE, MU_1,
         LOSS_VOLATILITY, EPOCH_MEAN, EPOCH_STD, BOUNTY_BETA, NUM_SIMULATIONS,
@@ -178,9 +186,9 @@ def main() -> None:
     axes[1].set_xlabel("Years", fontsize=12)
     plt.tight_layout()
 
-    os.makedirs("output", exist_ok=True)
+    _OUTPUT_DIR.mkdir(exist_ok=True)
     plt.savefig(
-        "output/fig_sweeper_bounty_dual_panel.png",
+        _OUTPUT_DIR / "fig_sweeper_bounty_dual_panel.png",
         dpi=300, bbox_inches="tight",
     )
     plt.show()

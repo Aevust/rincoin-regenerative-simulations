@@ -104,26 +104,32 @@ Every script is **fully parameterized**: edit the constants at the top of the fi
 
 | Paper Figure | Script | Key Parameters to Set |
 |:---|:---|:---|
-| **Figure 6** — Baseline (21M, mu=1.5%) | `src/sde/sde_baseline.py` | `INITIAL_SUPPLY=21_000_000`, `BASE_LOSS_RATE=0.015` |
-| **Figure 7** — Baseline (21M, mu=1.6%) | `src/sde/sde_baseline.py` | `INITIAL_SUPPLY=21_000_000`, `BASE_LOSS_RATE=0.016` |
-| **Figure 8** — Oversupply (28M, mu=1.5%) | `src/sde/sde_baseline.py` | `INITIAL_SUPPLY=28_000_000`, `BASE_LOSS_RATE=0.015` |
-| **Figure 9** — Sweeper Bounty Only | `src/sde/sde_sweeper_bounty.py` | `INITIAL_SUPPLY=21_000_000`, `MU_1=0.015`, `MU_2=0.016` |
-| **Figure 10** — Oversupply (28M, mu=1.6%) | `src/sde/sde_baseline.py` | `INITIAL_SUPPLY=28_000_000`, `BASE_LOSS_RATE=0.016` |
-| **Figure 12** — 4-Panel Recovery (mu=1.5%) | `src/sde/sde_4panel_recovery.py` | `MU=0.015`, `NUM_SIMS=1000` |
-| **Figure 12 lower** — Overlay (mu=1.5%) | `src/sde/sde_zkp_recovery_overlay.py` | `MU=0.015`, `NUM_SIMS=20_000` |
-| **Figure 13** — 4-Panel Recovery (mu=1.6%) | `src/sde/sde_4panel_recovery.py` | `MU=0.016`, `NUM_SIMS=1000` |
-| **Figure 13 lower** — Overlay (mu=1.6%) | `src/sde/sde_zkp_recovery_overlay.py` | `MU=0.016`, `NUM_SIMS=20_000` |
-| **Figure 14** — "The Miracle of Equilibrium" | `src/sde/sde_zkp_recovery_overlay.py` | `MU=0.017`, `NUM_SIMS=100_000` |
+| **Figure 7 (Upper)** — Baseline (21M, mu=1.5%) | `src/sde/sde_baseline.py` | `INITIAL_SUPPLY=21_000_000`, `BASE_LOSS_RATE=0.015`, `NUM_SIMULATIONS=1000` |
+| **Figure 7 (Lower)** — Baseline (21M, mu=1.6%) | `src/sde/sde_baseline.py` | `INITIAL_SUPPLY=21_000_000`, `BASE_LOSS_RATE=0.016`, `NUM_SIMULATIONS=1000` |
+| **Figure 8 (Upper)** — Oversupply (28M, mu=1.5%) | `src/sde/sde_baseline.py` | `INITIAL_SUPPLY=28_000_000`, `BASE_LOSS_RATE=0.015`, `NUM_SIMULATIONS=1000` |
+| **Figure 8 (Lower)** — Oversupply (28M, mu=1.6%) | `src/sde/sde_baseline.py` | `INITIAL_SUPPLY=28_000_000`, `BASE_LOSS_RATE=0.016`, `NUM_SIMULATIONS=1000` |
+| **Figure 9** — Sweeper Bounty Only (21M) | `src/sde/sde_sweeper_bounty.py` | `INITIAL_SUPPLY=21_000_000`, `MU_1=0.015`, `MU_2=0.016`, `NUM_SIMULATIONS=1000` |
+| **Figure 10** — Sweeper Bounty Only (28M) | `src/sde/sde_sweeper_bounty.py` | `INITIAL_SUPPLY=28_000_000`, `MU_1=0.015`, `MU_2=0.016`, `NUM_SIMULATIONS=1000` |
+| **Figure 12 (Upper)** — 4-Panel Recovery (21M, mu=1.5%) | `src/sde/sde_4panel_recovery.py` | `INITIAL_SUPPLY=21_000_000`, `MU=0.015`, `NUM_SIMS=1000` |
+| **Figure 12 (Lower)** — Overlay (21M, mu=1.5%) | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=21_000_000`, `MU=0.015`, `NUM_SIMS=20_000` |
+| **Figure 13 (Upper)** — 4-Panel Recovery (21M, mu=1.6%) | `src/sde/sde_4panel_recovery.py` | `INITIAL_SUPPLY=21_000_000`, `MU=0.016`, `NUM_SIMS=1000` |
+| **Figure 13 (Lower)** — Overlay (21M, mu=1.6%) | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=21_000_000`, `MU=0.016`, `NUM_SIMS=20_000` |
+| **Figure 14 (Upper)** — 4-Panel Recovery (21M, mu=1.7%) | `src/sde/sde_4panel_recovery.py` | `INITIAL_SUPPLY=21_000_000`, `MU=0.017`, `NUM_SIMS=1000` |
+| **Figure 14 (Lower)** — "The Miracle of Equilibrium" | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=21_000_000`, `MU=0.017`, `NUM_SIMS=100_000` |
+| **Figure 15 (Upper)** — 4-Panel Recovery (28M, mu=1.5%) | `src/sde/sde_4panel_recovery.py` | `INITIAL_SUPPLY=28_000_000`, `MU=0.015`, `NUM_SIMS=1000` |
+| **Figure 15 (Lower)** — Overlay (28M, mu=1.5%) | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=28_000_000`, `MU=0.015`, `NUM_SIMS=20_000` |
+| **Figure 16 (Upper)** — 4-Panel Recovery (28M, mu=1.6%) | `src/sde/sde_4panel_recovery.py` | `INITIAL_SUPPLY=28_000_000`, `MU=0.016`, `NUM_SIMS=1000` |
+| **Figure 16 (Lower)** — Overlay (28M, mu=1.6%) | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=28_000_000`, `MU=0.016`, `NUM_SIMS=20_000` |
+| **Figure 17 (Upper)** — 4-Panel Recovery (28M, mu=1.7%) | `src/sde/sde_4panel_recovery.py` | `INITIAL_SUPPLY=28_000_000`, `MU=0.017`, `NUM_SIMS=1000` |
+| **Figure 17 (Lower)** — Absolute Nash Equilibrium | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=28_000_000`, `MU=0.017`, `NUM_SIMS=100_000` |
 
 ### Deterministic Supply Trajectories
 
 | Paper Figure | Script | Description |
 |:---|:---|:---|
-| **Figure 1** — Baseline Standard (1% loss, 0.4 RIN final) | `src/deterministic/baseline_supply_dynamics.py` | Nakamoto-style halving schedule baseline trajectory |
-| **Figure 2** — Scenario I — 1.3% loss, 0.5 RIN final | `src/deterministic/customized_halving_scenarios.py` | Macro-hard-cap trajectory with conservative entropy |
-| **Figure 3** — Scenario II — 1.5% loss, 0.6 RIN final | `src/deterministic/customized_halving_scenarios.py` | Baseline protocol trajectory (default parameters) |
-| **Figure 4** — Scenario III — Extended 1 RIN phase | `src/deterministic/customized_halving_scenarios.py` | Circuit-breaker emission with extended issuance |
-| **Figure 6** — Rinne Scenario I — PoR dynamics | `src/deterministic/rinne_supply_dynamics.py` | Phase transition: C_Rin(t) stabilization + R_in(t) accumulation |
+| **Figure 1** — Baseline Standard | `src/deterministic/baseline_supply_dynamics.py` | Nakamoto-style halving schedule baseline trajectory |
+| **Figure 2, 3, 4** — Customized Halvings | `src/deterministic/customized_halving_scenarios.py` | Macro-hard cap vs. Real circulating supply mapping |
+| **Figure 6** — Rinne Scenario I | `src/deterministic/rinne_supply_dynamics.py` | PoR dynamic phase transition & steady state |
 
 The Baseline script outputs the standard halving reference; the three Customized Halving scenarios are generated in a single run, each saving its own PNG. The Rinne script outputs the full four-curve overlay (S, C, C_Rin, R_in).
 
@@ -131,9 +137,9 @@ The Baseline script outputs the standard halving reference; the three Customized
 
 | Paper Figure | Script | Description |
 |:---|:---|:---|
-| Fokker-Planck Dynamics | `src/pde/fokker_planck_dynamics.py` | PoW heat death vs. PoR steady-state wealth distribution |
-| Dual-Layer Architecture | `src/diagrams/dual_layer_architecture.py` | L1 Transactional (Space) / L2 Rinne (Time) schematic |
-| Cryptographic Vault | `src/diagrams/cryptographic_vault.py` | Vault bifurcation and epoch sweeper dynamics |
+| **Figure 5** — Dual-Layer Architecture | `src/diagrams/dual_layer_architecture.py` | L1 Transactional (Space) / L2 Rinne (Time) schematic |
+| **Figure 11** — Cryptographic Vault | `src/diagrams/cryptographic_vault.py` | Vault bifurcation and epoch sweeper dynamics |
+| **Figure 18** — Fokker-Planck Dynamics | `src/pde/fokker_planck_dynamics.py` | PoW heat death vs. PoR steady-state wealth distribution |
 
 ### Quick Reproduction (All Core Figures)
 
@@ -186,7 +192,9 @@ All simulation engines in this repository are **fully vectorized** using NumPy's
 | 4-Panel Recovery | 1,000 | < 3 s | ~10 MB |
 | ZKP Overlay (mu=0.015) | 20,000 | ~10 s | ~60 MB |
 | ZKP Overlay (mu=0.016) | 20,000 | ~10 s | ~60 MB |
-| **ZKP Overlay (mu=0.017)** | **100,000** | **~50 s** | **~300 MB** |
+| **ZKP Overlay (mu=0.017)** | **100,000** | **~50 s** | **~1.6 GB peak** |
+
+> **Note**: Peak memory accounts for all 5 pre-allocated arrays (C, D, V, Z\_loss, Z\_rec) across 2 simulation runs. On machines with less than 4 GB of free RAM, reduce `NUM_SIMS` to `20_000`.
 
 *Benchmarks measured on an Apple M2 Pro (12-core) with NumPy 1.26. Intel/AMD systems with AVX-512 may observe faster throughput on the N=100,000 configuration due to wider SIMD lanes.*
 
