@@ -177,7 +177,7 @@ python src/diagrams/cryptographic_vault.py
 
 ## Performance Note
 
-The **ZKP Recovery Overlay** model (`sde_zkp_recovery_overlay.py`) at its most demanding configuration — `MU=0.017`, `NUM_SIMS=100,000` — allocates and processes a state matrix of shape `(100_000, 401)`, requiring approximately **300 MB** of contiguous memory.
+The **ZKP Recovery Overlay** model (`sde_zkp_recovery_overlay.py`) at its most demanding configuration — `MU=0.017`, `NUM_SIMS=100,000` — processes state matrices of shape `(100_000, 401)`. Each individual matrix requires approximately 320 MB of contiguous memory; however, the vectorized simulation engine simultaneously allocates five such arrays (C, D, V, Z\_loss, Z\_rec) per run, and `main()` executes two runs (Scenario A and B). The resulting **peak memory footprint is approximately 1.6 GB**. A preflight check built into the script will print a warning if the estimated allocation exceeds 2 GB.
 
 All simulation engines in this repository are **fully vectorized** using NumPy's strided memory model:
 
