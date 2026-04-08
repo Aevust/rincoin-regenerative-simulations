@@ -236,7 +236,8 @@ def main() -> None:
         ticker.FuncFormatter(lambda x, pos: f"{x * 1e-6:,.1f}M")
     )
 
-    ax.legend(loc="upper left", fontsize=10, framealpha=0.9)
+    legend_loc = "upper right" if INITIAL_SUPPLY > TARGET_SUPPLY else "upper left"
+    ax.legend(loc=legend_loc, fontsize=10, framealpha=0.9)
     ax.grid(True, ls=":", alpha=0.4)
 
     plt.tight_layout()
