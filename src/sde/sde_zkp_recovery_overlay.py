@@ -133,15 +133,15 @@ def simulate_sweeper_zkp_model(
 # ==========================================
 
 YEARS = 400
-INITIAL_SUPPLY = 21_000_000
+INITIAL_SUPPLY = 21_000_000       # 21M, or 28M for extreme overshoot scenarios
 TARGET_SUPPLY = 21_000_000
 RF = 315_360
-MU = 0.017                   # The Miracle of Equilibrium: 0.015, 0.016, or 0.017
+MU = 0.017                        # The Miracle of Equilibrium: 0.015, 0.016, 0.017, 0.018 or 0.019
 SIGMA_C = 0.005
 SWEEP_MEAN = 30
 SWEEP_STD = 10
 BETA = 0.02
-NUM_SIMS = 100_000           # High precision: 20_000 or 100_000
+NUM_SIMS = 20_000                 # High precision: 20_000 or 100_000
 
 
 # ==========================================
@@ -236,10 +236,22 @@ def main() -> None:
         ticker.FuncFormatter(lambda x, pos: f"{x * 1e-6:,.1f}M")
     )
 
-    legend_loc = "upper right" if INITIAL_SUPPLY > TARGET_SUPPLY else "upper left"
-    ax.legend(loc=legend_loc, fontsize=10, framealpha=0.9)
+    # Dynamically determine the optimal legend placement based on thermodynamic parameters.
+    # If starting exactly at the 21M target under severe entropic decay (MU >= 0.017),
+    # relocate the legend completely outside the plot to avoid overlapping the expanding CI bands.
+    if MU >= 0.017 and INITIAL_SUPPLY == 21_000_000:
+        ax.legend(loc="upper left", bbox_to_anchor=(1.02, 1), fontsize=10, framealpha=0.9)
+    elif INITIAL_SUPPLY > TARGET_SUPPLY:
+        # In extreme oversupply scenarios (e.g., 28M), the curve drops from the top-left,
+        # making the 'upper right' quadrant the safest internal space.
+        ax.legend(loc="upper right", fontsize=10, framealpha=0.9)
+    else:
+        # Default internal placement for nominal conditions (MU < 0.017, Initial = 21M).
+        ax.legend(loc="upper left", fontsize=10, framealpha=0.9)
+
     ax.grid(True, ls=":", alpha=0.4)
 
+    # Apply tight_layout to ensure the external legend is not cropped during export.
     plt.tight_layout()
 
     _OUTPUT_DIR.mkdir(exist_ok=True)

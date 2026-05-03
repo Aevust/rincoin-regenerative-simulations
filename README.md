@@ -193,6 +193,8 @@ All simulation engines in this repository are **fully vectorized** using NumPy's
 | ZKP Overlay (mu=0.015) | 20,000 | ~10 s | ~60 MB |
 | ZKP Overlay (mu=0.016) | 20,000 | ~10 s | ~60 MB |
 | **ZKP Overlay (mu=0.017)** | **100,000** | **~50 s** | **~1.6 GB peak** |
+| **ZKP Overlay (mu=0.017~)** | **500,000** | **~100 s** | **~15 GB peak** |
+| **ZKP Overlay (mu=0.017~)** | **1,000,000** | **~180 s** | **~30.0 GB peak** |
 
 > **Note**: Peak memory accounts for all 5 pre-allocated arrays (C, D, V, Z\_loss, Z\_rec) across 2 simulation runs. On machines with less than 4 GB of free RAM, reduce `NUM_SIMS` to `20_000`.
 
