@@ -13,7 +13,7 @@
 
 This repository provides the **complete, reproducible simulation suite** accompanying the paper:
 
-> *On the Convergence of Regenerative Thermodynamic Security and Economic Incentives* (Rincoin v1.6.2)
+> *On the Convergence of Regenerative Thermodynamic Security and Economic Incentives* (Rincoin v1.6.3)
 
 Legacy Proof-of-Work blockchains suffer from an irreversible thermodynamic pathology: private keys are lost, holders die, and coins become permanently inaccessible. Over centuries, this monotonic increase in entropy drives the circulating supply toward zero — a macroeconomic **heat death** analogous to the Second Law of Thermodynamics. The resulting wealth concentration among "dead whales" is not merely an inconvenience; it is a fundamental violation of the economic sustainability axiom upon which any monetary system must rest.
 
@@ -111,17 +111,21 @@ Every script is **fully parameterized**: edit the constants at the top of the fi
 | **Figure 9** — Sweeper Bounty Only (21M) | `src/sde/sde_sweeper_bounty.py` | `INITIAL_SUPPLY=21_000_000`, `MU_1=0.015`, `MU_2=0.016`, `NUM_SIMULATIONS=1000` |
 | **Figure 10** — Sweeper Bounty Only (28M) | `src/sde/sde_sweeper_bounty.py` | `INITIAL_SUPPLY=28_000_000`, `MU_1=0.015`, `MU_2=0.016`, `NUM_SIMULATIONS=1000` |
 | **Figure 12 (Upper)** — 4-Panel Recovery (21M, mu=1.5%) | `src/sde/sde_4panel_recovery.py` | `INITIAL_SUPPLY=21_000_000`, `MU=0.015`, `NUM_SIMS=1000` |
-| **Figure 12 (Lower)** — Overlay (21M, mu=1.5%) | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=21_000_000`, `MU=0.015`, `NUM_SIMS=20_000` |
+| **Figure 12 (Lower)** — Overlay (21M, mu=1.5%) | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=21_000_000`, `MU=0.015`, `NUM_SIMS=500_000` |
 | **Figure 13 (Upper)** — 4-Panel Recovery (21M, mu=1.6%) | `src/sde/sde_4panel_recovery.py` | `INITIAL_SUPPLY=21_000_000`, `MU=0.016`, `NUM_SIMS=1000` |
-| **Figure 13 (Lower)** — Overlay (21M, mu=1.6%) | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=21_000_000`, `MU=0.016`, `NUM_SIMS=20_000` |
+| **Figure 13 (Lower)** — Overlay (21M, mu=1.6%) | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=21_000_000`, `MU=0.016`, `NUM_SIMS=500_000` |
 | **Figure 14 (Upper)** — 4-Panel Recovery (21M, mu=1.7%) | `src/sde/sde_4panel_recovery.py` | `INITIAL_SUPPLY=21_000_000`, `MU=0.017`, `NUM_SIMS=1000` |
-| **Figure 14 (Lower)** — "The Miracle of Equilibrium" | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=21_000_000`, `MU=0.017`, `NUM_SIMS=100_000` |
+| **Figure 14 (Lower)** — "The Miracle of Equilibrium" | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=21_000_000`, `MU=0.017`, `NUM_SIMS=1_000_000` |
 | **Figure 15 (Upper)** — 4-Panel Recovery (28M, mu=1.5%) | `src/sde/sde_4panel_recovery.py` | `INITIAL_SUPPLY=28_000_000`, `MU=0.015`, `NUM_SIMS=1000` |
-| **Figure 15 (Lower)** — Overlay (28M, mu=1.5%) | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=28_000_000`, `MU=0.015`, `NUM_SIMS=20_000` |
+| **Figure 15 (Lower)** — Overlay (28M, mu=1.5%) | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=28_000_000`, `MU=0.015`, `NUM_SIMS=500_000` |
 | **Figure 16 (Upper)** — 4-Panel Recovery (28M, mu=1.6%) | `src/sde/sde_4panel_recovery.py` | `INITIAL_SUPPLY=28_000_000`, `MU=0.016`, `NUM_SIMS=1000` |
-| **Figure 16 (Lower)** — Overlay (28M, mu=1.6%) | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=28_000_000`, `MU=0.016`, `NUM_SIMS=20_000` |
+| **Figure 16 (Lower)** — Overlay (28M, mu=1.6%) | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=28_000_000`, `MU=0.016`, `NUM_SIMS=500_000` |
 | **Figure 17 (Upper)** — 4-Panel Recovery (28M, mu=1.7%) | `src/sde/sde_4panel_recovery.py` | `INITIAL_SUPPLY=28_000_000`, `MU=0.017`, `NUM_SIMS=1000` |
-| **Figure 17 (Lower)** — Absolute Nash Equilibrium | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=28_000_000`, `MU=0.017`, `NUM_SIMS=100_000` |
+| **Figure 17 (Lower)** — Absolute Nash Equilibrium | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=28_000_000`, `MU=0.017`, `NUM_SIMS=1_000_000` |
+| **Figure 18 (Upper)** — Marginal Decoupling | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=21_000_000`, `MU=0.018`, `NUM_SIMS=1_000_000` |
+| **Figure 18 (Lower)** — Marginal Decoupling | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=28_000_000`, `MU=0.018`, `NUM_SIMS=1_000_000` |
+| **Figure 19 (Upper)** — Definitive Statistical Decoupling | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=21_000_000`, `MU=0.019`, `NUM_SIMS=1_000_000` |
+| **Figure 19 (Lower)** — Definitive Statistical Decoupling | `src/sde/sde_zkp_recovery_overlay.py` | `INITIAL_SUPPLY=28_000_000`, `MU=0.019`, `NUM_SIMS=1_000_000` |
 
 ### Deterministic Supply Trajectories
 
@@ -190,10 +194,9 @@ All simulation engines in this repository are **fully vectorized** using NumPy's
 | Baseline SDE | 1,000 | < 1 s | ~3 MB |
 | Sweeper Bounty | 1,000 | < 2 s | ~6 MB |
 | 4-Panel Recovery | 1,000 | < 3 s | ~10 MB |
-| ZKP Overlay (mu=0.015) | 20,000 | ~10 s | ~60 MB |
-| ZKP Overlay (mu=0.016) | 20,000 | ~10 s | ~60 MB |
-| **ZKP Overlay (mu=0.017)** | **100,000** | **~50 s** | **~1.6 GB peak** |
-| **ZKP Overlay (mu=0.017~)** | **500,000** | **~100 s** | **~15 GB peak** |
+| Default ZKP Overlay (mu=0.015~) | 20,000 | ~10 s | ~60 MB |
+| **Default Limit ZKP Overlay (mu=0.015~)** | **100,000** | **~50 s** | **~1.6 GB peak** |
+| **ZKP Overlay (mu=0.015~)** | **500,000** | **~100 s** | **~15.0 GB peak** |
 | **ZKP Overlay (mu=0.017~)** | **1,000,000** | **~180 s** | **~30.0 GB peak** |
 
 > **Note**: Peak memory accounts for all 5 pre-allocated arrays (C, D, V, Z\_loss, Z\_rec) across 2 simulation runs. On machines with less than 4 GB of free RAM, reduce `NUM_SIMS` to `20_000`.
@@ -266,7 +269,7 @@ The `src/spde/` directory is reserved for planned extensions:
 - **Multi-Asset Interactions**: Cross-chain thermodynamic coupling between Rincoin and legacy PoW chains, modeling entropy transfer at bridge interfaces.
 - **Empirical Calibration**: Parameter estimation from real-world Bitcoin UTXO dormancy data to calibrate `mu`, `sigma`, and epoch distributions.
 
-Contributions in these directions are welcome. Please open an issue to discuss scope before submitting a pull request.
+Contributions in these directions are welcome. Please open an issue to discuss the scope before submitting a pull request.
 
 ---
 
@@ -285,15 +288,15 @@ Contributions in these directions are welcome. Please open an issue to discuss s
 If you use this code in academic work, please cite:
 
 ```bibtex
-@software{tokino2026rincoin,
-  title        = {On the Convergence of Regenerative Thermodynamic Security and Economic Incentives (Rincoin v1.6.2)},
-  author       = {Tokino, Michiru},
-  year         = {2026},
-  version      = {1.6.2},
-  publisher    = {Zenodo},
-  note         = {Rincoin Whitepaper v1.6.2 — Simulation Suite},
-  doi          = {10.5281/zenodo.17141922},
-  url          = {https://github.com/Aevust/rincoin-regenerative-simulations}
+@software{tokino2026rincoinsim,
+    author       = {Tokino, Michiru},
+    title        = {Rincoin Regenerative Simulations: Reproducible Monte Carlo and Deterministic Validation Suite for the Unified Regenerative Framework},
+    year         = {2026},
+    version      = {1.6.3},
+    publisher    = {Zenodo},
+    doi          = {10.5281/zenodo.17141922},
+    url          = {https://github.com/Aevust/rincoin-regenerative-simulations},
+    note         = {Companion simulation suite for Rincoin Whitepaper v1.6.3}
 }
 ```
 

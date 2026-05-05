@@ -7,7 +7,7 @@ Simulates macroeconomic homeostasis via the Recirculation Incentive Mechanism
 and ZKP Owner Recovery, overlaying baseline (0% recovery) and ZKP (10% recovery)
 scenarios on a single plot with theoretical equilibrium lines.
 
-This is the **highlight model** of the paper: at N=100,000 with MU=0.017,
+This is the **highlight model** of the paper: at N=1,000,000 with MU=0.017,
 it proves that ZKP Owner Recovery restores the 21M target even under
 extreme entropic pressure — "The Miracle of Equilibrium".
 
@@ -17,9 +17,32 @@ target lines, and chart titles.
 
 Paper Figures
 -------------
-- [Figure 12 lower] MU=0.015, NUM_SIMS=20_000
-- [Figure 13 lower] MU=0.016, NUM_SIMS=20_000
-- [Figure 14]        MU=0.017, NUM_SIMS=100_000  ("The Miracle of Equilibrium")
+- [Figure 12 and 15 lower] MU=0.015, NUM_SIMS=500_000
+- [Figure 13 and 16 lower] MU=0.016, NUM_SIMS=500_000
+- [Figure 14 and 17 lower] MU=0.017, NUM_SIMS=1_000_000  ("The Miracle of Equilibrium")
+- [Figure 18]              MU=0.018, NUM_SIMS=1_000_000
+- [Figure 19]              MU=0.019, NUM_SIMS=1_000_000
+
+Hardware Safety Limit
+---------------------
+By default, NUM_SIMS is capped at 100,000 by a built-in fail-safe guard
+to prevent Out-of-Memory (OOM) crashes on standard hardware.
+
+To reproduce the paper figures at full precision (NUM_SIMS >= 500,000),
+the following conditions must be met:
+
+    1. Ensure sufficient RAM:
+         NUM_SIMS =   500,000 → ~15 GB peak RAM
+         NUM_SIMS = 1,000,000 → ~30 GB peak RAM
+
+    2. Comment out the enforcement block in Section 2 (System Parameters):
+         # if NUM_SIMS > MAX_SIMS:
+         #     ...
+         #     NUM_SIMS = MAX_SIMS
+
+    WARNING: Running NUM_SIMS > 100,000 on a standard PC (16 GB RAM or less)
+    will likely cause the OS to freeze or crash. Proceed only on a workstation
+    or server with sufficient memory.
 
 Usage
 -----
@@ -142,6 +165,24 @@ SWEEP_MEAN = 30
 SWEEP_STD = 10
 BETA = 0.02
 NUM_SIMS = 20_000                 # High precision: 20_000 or 100_000
+
+# ── Hardware Safety Limit (Fail-Safe) ────────────────────────────────────────
+# Each simulation run allocates ~5 arrays × float64 × NUM_SIMS × (YEARS+1) steps.
+# At NUM_SIMS=1_000_000 peak RAM reaches ~30 GB; beyond that, OOM crash is likely.
+#
+# To intentionally run above this limit (e.g., on a 128 GB workstation),
+# comment out the enforcement block below — but never on a standard PC.
+MAX_SIMS = 100_000  # Hard ceiling: modify only with sufficient RAM
+
+if NUM_SIMS > MAX_SIMS:
+    print(
+        f"[SYSTEM GUARD] WARNING: NUM_SIMS={NUM_SIMS:,} exceeds the "
+        f"hardware safety limit of {MAX_SIMS:,}.\n"
+        f"              Capping at {MAX_SIMS:,} to prevent OOM crash.\n"
+        f"              To override, comment out this block in System Parameters."
+    )
+    NUM_SIMS = MAX_SIMS
+# ─────────────────────────────────────────────────────────────────────────────
 
 
 # ==========================================
